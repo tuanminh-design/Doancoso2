@@ -1,0 +1,18 @@
+# System and editor files
+.DS_Store
+Thumbs.db
+*.tmp
+.idea/
+.vscode/
+
+# Environment configurations
+.env
+
+# Storage logs and temporary files
+storage/logs/*.log
+storage/cache/*
+
+# Keep upload directories
+!public/uploads/
+!public/uploads/products/
+!public/uploads/news/

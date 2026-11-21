@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Protect sensitive files and directories
+    RewriteRule ^(\.git|config|database|storage|app)/.*$ - [F,L]
+    RewriteRule \.(sql|env|log|ini|md)$ - [F,L]
+
+    # Map assets and uploads to public directory if requested from root
+    RewriteRule ^assets/(.*)$ public/assets/$1 [L]
+    RewriteRule ^uploads/(.*)$ public/uploads/$1 [L]
+
+    # If the requested file or directory exists, serve directly
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Forward all other requests to index.php
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
